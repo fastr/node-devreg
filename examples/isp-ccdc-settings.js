@@ -1,6 +1,7 @@
 // All the registers I care to set have values
 // All the registers I care to read are present
 // Registers that don't have valid values will not be changed
+// These settings are optimized for the FSR
 
 var ccdc = {
   "pid": { // Read-only Peripheral ID Register
@@ -29,7 +30,7 @@ var ccdc = {
     "datsiz": "0x4", // 12 bits. cam_d signal width in SYNC mode.
     "fldmode": "0x0", // Progressive mode. cam_fld signal mode. 
     "datapol": "0x0", // cam_d signal polarity
-    "exwen": "0x1", // External write enable selection. (depends cam_hs, cam_vs)
+    "exwen": "0x0", // External write enable selection. (depends cam_hs, cam_vs)
     "fldpol": "", // cam_fld signal polarity
     "hdpol": "", // Sets the cam_hs signal polarity
     "vdpol": "", // Sets the cam_vs signal polarity
@@ -62,7 +63,7 @@ var ccdc = {
     "reserved-0": "",
     "nlv": "15999", // Number of lines - vertical direction
   },
-  "culling": { // Cull control (cull or retain lines)
+  "culling": { // Cull control (cull means to retain lines)
     "culhevn": "255",
     "culhodd": "255",
     "reserved-0": "0x0",
@@ -165,7 +166,7 @@ var ccdc = {
     "reserved-0": "0x0000",
     "vpif_frq": "0x0", // preview, h3a, hist, etc
     "vpen": "0", // ditto
-    "vpin": "0x4",
+    "vpin": "0x0", // which lines to use when in 10-bit mode
     "plen_even": "0x0",
     "plen_odd": "0x0",
     "lnum": "0x0",
