@@ -35,8 +35,8 @@ Object.keys(settings).forEach(function (platform) {
           devreg(docs)
             .print()
             //.read(callback) // TODO
-            //.check(settings)
-            .write(settings[platform][device]);
+            //.write(settings[platform][device]);
+            .verify(settings[platform][device]);
         });
       }); 
     });
