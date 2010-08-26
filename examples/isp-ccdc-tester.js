@@ -26,12 +26,12 @@ Object.keys(settings).forEach(function (platform) {
           return;
         }
         docs = require('../docs/' + platform + '/' + device);
-        registers = flattenDocs(settings[platform][device]);
-        sys.puts('DEVICE: ' + registers);
+        //registers = flattenDocs(docs[platform][device]);
+        //sys.puts('DEVICE: ' + device);
         devreg(docs)
           .read()
-          .check(settings)
-          .write(settings);
+          //.check(settings)
+          //.write(settings);
       }); 
     });
   });

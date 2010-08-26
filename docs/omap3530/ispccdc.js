@@ -175,6 +175,6 @@ var ispccdc = { // a group of devices
     }
   }
 }
-exports.isp = ispccdc.isp;
+module.exports = ispccdc.isp;
 //exports.ccdc = ispccdc.ccdc;
 //exports.sbl = ispccdc.sbl;

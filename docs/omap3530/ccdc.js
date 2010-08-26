@@ -297,4 +297,4 @@ var ccdc = {
     }
   }
 }
-exports.ccdc = ccdc;
+module.exports = ccdc;
