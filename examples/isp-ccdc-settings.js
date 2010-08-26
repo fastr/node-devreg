@@ -263,4 +263,5 @@ var ccdc = {
 };
 
 exports.omap3530 = {};
+//exports.omap3530.isp = {};
 exports.omap3530.ccdc = ccdc;

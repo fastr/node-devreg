@@ -2,13 +2,13 @@
 
 var node = process.argv[0],
   self = process.argv[1],
-  module_path = process.argv[2];
+  module_path = process.argv[2] || 'isp-ccdc-settings';
 
 var sys = require('sys'),
   fs = require('fs'),
-  devreg = require('../lib/devreg').devreg,
-  Futures = require('../support/futures');
-  settings = require(module_path);
+  devreg = require('../lib/devreg'),
+  Futures = require('../support/futures'),
+  settings = require('./' + module_path);
 
 var docs,
   flattenDocs = require('../lib/flattendocs').flattenDocs;
@@ -26,12 +26,18 @@ Object.keys(settings).forEach(function (platform) {
           return;
         }
         docs = require('../docs/' + platform + '/' + device);
-        //registers = flattenDocs(docs[platform][device]);
-        //sys.puts('DEVICE: ' + device);
-        devreg(docs)
-          .read()
-          //.check(settings)
-          //.write(settings);
+
+        fs.open('/dev/video0', 'r', undefined, function(err, fd) {
+          if (err) {
+            throw new Error(err);
+          }
+          // BUG improper scoping means that this will only run once
+          devreg(docs)
+            .print()
+            //.read(callback) // TODO
+            //.check(settings)
+            .write(settings[platform][device]);
+        });
       }); 
     });
   });

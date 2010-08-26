@@ -175,6 +175,6 @@ var ispccdc = { // a group of devices
     }
   }
 }
-module.exports = ispccdc.isp;
+module.exports = require('../../lib/flattendocs').flattenDocs(ispccdc.isp);
 //exports.ccdc = ispccdc.ccdc;
 //exports.sbl = ispccdc.sbl;
