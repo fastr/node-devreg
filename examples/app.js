@@ -1,14 +1,22 @@
 #!/usr/bin/env node
+
+var node = process.argv[0],
+  self = process.argv[1],
+  module_path = process.argv[2] || 'isp-ccdc-settings'; // CHANGEME -- YOUR SETTINGS FILE (without .js)
+
 var sys = require('sys'),
-  devreg = require('./devreg').devreg,
-  devices = require('./ispccdc'),
-  flattenDocs = require('./flattendocs').flattenDocs,
-  ccdc_registers = require('./ccdc_register_values').settings,
-  Futures = require('./futures'),
-  registers = {};
+  fs = require('fs'),
+  devreg = require('../lib/devreg'),
+  Futures = require('../support/futures'),
+  settings = require('./' + module_path);
 
-registers.ccdc = ccdc_registers;
-var ccdc_device = require('./ccdc').ccdc;
-
-  devreg(ccdc_device, ccdc_registers)
-    .verify(ccdc_registers)
+fs.open('/dev/video0', 'r', undefined, function(err, fd) { // CHANGEME -- this open of video0 is only necessary for isp/ccdc stuff
+  if (err) {
+    throw new Error(err);
+  }
+  var docs = require('../docs/omap3530/ccdc'); // CHANGEME -- YOUR DOCUMENT FILE (without .js)
+  devreg(docs)
+    .print()
+    //.write(settings[platform][device]); // CHANGEME -- uncomment if you like
+    //.verify(settings[platform][device]); // CHANGEME -- uncomment if you like
+});

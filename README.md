@@ -7,6 +7,9 @@ Reading ISP / CCDC registers on OMAP3530
 
     cd ./examples
     node isp-ccdc-tester.js isp-ccdc-settings
+    #Note you must have a /dev/video0 for this example to work.
+
+Modify `app.js` for a simpler version of your own.
 
 TODO
 ====

@@ -2,16 +2,13 @@
 
 var node = process.argv[0],
   self = process.argv[1],
-  module_path = process.argv[2] || 'isp-ccdc-settings';
+  module_path = process.argv[2] || 'isp-ccdc-settings'; // CHANGEME -- YOUR SETTINGS FILE (without .js)
 
 var sys = require('sys'),
   fs = require('fs'),
   devreg = require('../lib/devreg'),
   Futures = require('../support/futures'),
   settings = require('./' + module_path);
-
-var docs,
-  flattenDocs = require('../lib/flattendocs').flattenDocs;
 
 Object.keys(settings).forEach(function (platform) {
   fs.readdir('../docs/' + platform, function(err) {
@@ -25,7 +22,7 @@ Object.keys(settings).forEach(function (platform) {
           sys.puts('device "' + platform + '/' + device + '" is not yet documented.');
           return;
         }
-        docs = require('../docs/' + platform + '/' + device);
+        var docs = require('../docs/' + platform + '/' + device);
 
         fs.open('/dev/video0', 'r', undefined, function(err, fd) {
           if (err) {
@@ -34,9 +31,8 @@ Object.keys(settings).forEach(function (platform) {
           // BUG improper scoping means that this will only run once
           devreg(docs)
             .print()
-            //.read(callback) // TODO
-            //.write(settings[platform][device]);
-            .verify(settings[platform][device]);
+            //.write(settings[platform][device]); // CHANGEME -- uncomment if you like
+            //.verify(settings[platform][device]); // CHANGEME -- uncomment if you like
         });
       }); 
     });
