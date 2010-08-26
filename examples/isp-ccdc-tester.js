@@ -28,7 +28,6 @@ Object.keys(settings).forEach(function (platform) {
           if (err) {
             throw new Error(err);
           }
-          // BUG improper scoping means that this will only run once
           devreg(docs)
             .print()
             //.write(settings[platform][device]); // CHANGEME -- uncomment if you like
