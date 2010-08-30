@@ -38,9 +38,9 @@ Adding your device
 
 0. Modify `app.js` for a simpler version of your own.
 0. Manually enter in the meta-data about the register - its name, its fields, etc - from the spruf98h.pdf in one of these "document" formats:
-  * Simple Format: http://github.com/fastr/node-devreg/blob/master/docs/omap3530/ccdc.js
-  * Full Format: http://github.com/fastr/node-devreg/blob/master/docs/omap3530/isp.js
-  * And make sure you e-mail it to me or fork me on github so I can add it to the list of documents.
+  0. * Simple Format: http://github.com/fastr/node-devreg/blob/master/docs/omap3530/ccdc.js
+  0. * Full Format: http://github.com/fastr/node-devreg/blob/master/docs/omap3530/isp.js
+  0. * And make sure you e-mail it to me or fork me on github so I can add it to the list of documents.
 0. Optionally you can define the "settings" you would like to check against or that you would like to set the values to.
 Example: http://github.com/fastr/node-devreg/blob/master/examples/isp-ccdc-settings.js
 
